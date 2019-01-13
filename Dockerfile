@@ -6,7 +6,7 @@ FROM python:${PYTHON_VERSION}
 
 ARG PANDAS_VERSION=0.23.4
 
-RUN apk add --no-cache python3-dev libstdc++ && \
+RUN apk add --no-cache libstdc++ && \
     apk add --no-cache --virtual .build-deps g++ && \
     ln -s /usr/include/locale.h /usr/include/xlocale.h && \
     pip3 install numpy==1.15.4 && \
