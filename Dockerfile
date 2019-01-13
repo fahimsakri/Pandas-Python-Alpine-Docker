@@ -4,6 +4,12 @@ FROM python:${PYTHON_VERSION}
 
 # install basic python utils and bash utils
 
-RUN apk update && apk upgrade && apk add --no-cache gcc g++ libc-dev musl-dev unixodbc-dev make linux-headers
+ARG PANDAS_VERSION=0.23.4
 
-RUN pip3 install pandas==0.23.1
+RUN apk add --no-cache python3-dev libstdc++ && \
+    apk add --no-cache --virtual .build-deps g++ && \
+    ln -s /usr/include/locale.h /usr/include/xlocale.h && \
+    pip3 install numpy==1.15.4 && \
+    pip3 install pandas==${PANDAS_VERSION} && \
+    apk del .build-deps
+
