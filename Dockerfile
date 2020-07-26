@@ -1,10 +1,10 @@
-ARG PYTHON_VERSION=3.7.2-alpine3.8
+ARG PYTHON_VERSION=3.7.8-alpine3.12
 
 FROM python:${PYTHON_VERSION}
 
 # install basic python utils and bash utils
 
-ARG PANDAS_VERSION=0.23.4
+ARG PANDAS_VERSION=1.0.5
 
 RUN apk add --no-cache libstdc++ && \
     apk add --no-cache --virtual .build-deps g++ && \
